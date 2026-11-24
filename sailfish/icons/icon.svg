@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232429"/><stop offset="0.55" stop-color="#171820"/><stop offset="1" stop-color="#0d0e12"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8a00" stop-opacity="0"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0.35"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+    <clipPath id="tile"><path d="M128,0 L256,0 L256,128 A128,128 0 0 1 128,256 L0,256 L0,128 A128,128 0 0 1 128,0 Z"/></clipPath>
+  </defs>
+  <path d="M128,0 L256,0 L256,128 A128,128 0 0 1 128,256 L0,256 L0,128 A128,128 0 0 1 128,0 Z" fill="url(#bg)"/>
+  <path d="M128,0 L256,0 L256,128 A128,128 0 0 1 128,256 L0,256 L0,128 A128,128 0 0 1 128,0 Z" fill="none" stroke="#ff8a00" stroke-opacity="0.45" stroke-width="6" clip-path="url(#tile)"/>
+  <path d="M78 52 h70 l30 30 v122 h-100 z" fill="#e0e0e0"/>
+  <path d="M148 52 v30 h30" fill="#b9bcc4"/>
+  <g stroke="#6b6f7a" stroke-width="7" stroke-linecap="round">
+    <line x1="96" y1="102" x2="160" y2="102"/><line x1="96" y1="122" x2="152" y2="122"/>
+    <line x1="96" y1="142" x2="160" y2="142"/><line x1="96" y1="162" x2="140" y2="162"/>
+  </g>
+  <rect x="78" y="112" width="100" height="40" fill="url(#beam)"/>
+  <line x1="58" y1="152" x2="198" y2="152" stroke="#ff8a00" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+  <line x1="58" y1="152" x2="198" y2="152" stroke="#ffb44a" stroke-width="5" stroke-linecap="round"/>
+</svg>

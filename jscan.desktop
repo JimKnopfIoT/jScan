@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=jScan
+GenericName=Document Scanner
+GenericName[de]=Dokumentenscanner
+Comment=Scan documents to PDF with a sheet-fed or network scanner
+Comment[de]=Dokumente mit dem Einzug- oder Netzwerkscanner als PDF scannen
+Exec=jscan
+Icon=scanner
+Terminal=false
+Categories=Graphics;Scanning;
+Keywords=scan;scanner;pdf;canon;
+Keywords[de]=scan;scanner;scannen;pdf;canon;
