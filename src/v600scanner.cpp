@@ -549,10 +549,11 @@ QImage scan(const QRectF &areaIn, bool gray, int dpi, int depth, const std::atom
 
     // ---- scan window at the optical resolution -----------------------------
     QRectF area = areaIn.normalized();
-    area.setLeft(std::max(0.0, area.left()));
-    area.setTop(std::max(0.0, area.top()));
-    area.setRight(std::min(kGlassW, area.right()));
-    area.setBottom(std::min(kGlassH, area.bottom()));
+    // qreal is float on 32-bit ARM builds of Qt 5.6: compare as double
+    area.setLeft(std::max(0.0, double(area.left())));
+    area.setTop(std::max(0.0, double(area.top())));
+    area.setRight(std::min(kGlassW, double(area.right())));
+    area.setBottom(std::min(kGlassH, double(area.bottom())));
     if (area.width() < 1 || area.height() < 1) {
         *error = QCoreApplication::translate("jScan", "The scan area is empty.");
         return {};
