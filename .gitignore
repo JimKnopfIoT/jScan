@@ -10,3 +10,6 @@
 
 # never: scanner firmware (Epson's property)
 esfwA1.bin
+
+# screenshot originals; the README uses the smaller JPEGs
+/Screenshots/*.png

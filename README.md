@@ -8,7 +8,8 @@ optionally searchable through Tesseract OCR – PNG or unprocessed TIFF.
 The Sailfish OS app is [harbour-jscan](https://github.com/JimKnopfIoT/harbour-jscan);
 it uses a copy of the scanner core in `src/`.
 
-The user interface is in English and German.
+The desktop window is in German; scan and PDF messages are in English and
+German.
 
 ## Features
 
@@ -21,6 +22,13 @@ The user interface is in English and German.
 - Blank pages can be removed automatically when using the feeder.
 - PDF lossless or JPEG-compressed; searchable PDF (German and English text
   recognition) with Tesseract.
+
+## Screenshot
+
+<img src="Screenshots/jScan1.jpg" width="700" alt="jScan main window after a quick scan with the Epson Perfection V600 Photo">
+
+Main window after a quick scan with the Epson Perfection V600 Photo; drag
+with the mouse to choose the scan area, then “Scannen”.
 
 ## Tested devices
 
