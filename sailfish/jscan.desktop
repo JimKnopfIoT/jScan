@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-X-Nemo-Application-Type=silica-qt5
-Icon=jscan
-Exec=jscan
-Name=jScan
-
-[X-Sailjail]
-Sandboxing=Disabled

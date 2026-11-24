@@ -438,6 +438,19 @@ bool isPresent()
     return found;
 }
 
+// Directory name of the app's data: "jscan" (desktop), "harbour-jscan" (Sailfish OS).
+QString appDirName()
+{
+    const QString n = QCoreApplication::applicationName();
+    return n.isEmpty() ? QStringLiteral("jscan") : n;
+}
+
+QString perUserFirmwarePath()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1Char('/')
+           + appDirName() + QStringLiteral("/firmware/") + QString::fromLatin1(kFwName);
+}
+
 QStringList firmwareSearchPaths()
 {
     const QString name = QString::fromLatin1(kFwName);
@@ -445,11 +458,14 @@ QStringList firmwareSearchPaths()
     const QString env = QString::fromLocal8Bit(qgetenv("JSCAN_V600_FIRMWARE"));
     if (!env.isEmpty())
         out << env;
-    // per user: ~/.local/share/jscan/firmware/esfwA1.bin
-    out << QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-               + QStringLiteral("/jscan/firmware/") + name;
+    // per user: ~/.local/share/<app>/firmware/esfwA1.bin
+    out << perUserFirmwarePath();
+    // earlier versions of the Sailfish app were called "jscan"
+    if (appDirName() != QLatin1String("jscan"))
+        out << QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
+                   + QStringLiteral("/jscan/firmware/") + name;
     // system wide
-    out << QStringLiteral("/usr/share/jscan/firmware/") + name;
+    out << QStringLiteral("/usr/share/") + appDirName() + QStringLiteral("/firmware/") + name;
     // where Epson's own package (iscan-plugin-gt-x820) installs it
     out << QStringLiteral("/usr/share/iscan/") + name
         << QStringLiteral("/usr/local/share/iscan/") + name;
@@ -474,8 +490,7 @@ QString firmwareMissingText()
     QStringList paths = firmwareSearchPaths();
     if (qEnvironmentVariableIsEmpty("JSCAN_V600_FIRMWARE"))
         paths.prepend(QStringLiteral("$JSCAN_V600_FIRMWARE"));
-    const QString perUser = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
-                            + QStringLiteral("/jscan/firmware/") + QString::fromLatin1(kFwName);
+    const QString perUser = perUserFirmwarePath();
     return QCoreApplication::translate(
                "jScan",
                "The Epson Perfection V600 Photo needs Epson's firmware file, which is not "
@@ -487,7 +502,7 @@ QString firmwareMissingText()
                "Where to get it: Fedora package “iscan-firmware”, Arch Linux AUR package "
                "“iscan-plugin-gt-x820”, or Epson's Linux driver download for the Perfection "
                "V600 Photo (bundle “iscan-gt-x820-bundle”; the file is usr/share/iscan/%1 in "
-               "the package iscan-plugin-gt-x820). Details are in jScan's README.")
+               "the package iscan-plugin-gt-x820). Details are in the README.")
         .arg(QString::fromLatin1(kFwName), perUser, paths.join(QLatin1Char('\n')));
 }
 

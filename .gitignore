@@ -3,18 +3,6 @@
 /compile_commands.json
 /.cache/
 
-# Sailfish build outputs (mb2 builds in place)
-/sailfish/*.o
-/sailfish/moc_*.cpp
-/sailfish/Makefile
-/sailfish/jscan
-/sailfish/build.log
-/sailfish/documentation.list
-/sailfish/installroot/
-/sailfish/RPMS/
-/sailfish/.mb2/
-/sailfish/translations/
-
 # scanner research: captures and scans stay local (private documents)
 /v600-captures/
 /tools/v600tool/v600tool
